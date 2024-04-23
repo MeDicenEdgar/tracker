@@ -1,23 +1,16 @@
 
-//Jenkinsfile (Declarative Pipeline)
-/* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { docker { image 'python:3.12.1-alpine3.19' } }
+    agent any
+
     stages {
-        stage('build') {
+        stage('Hello') {
             steps {
-                sh 'python --version'
+                sh '''
+                java -version
+                javac Main.java
+                java Main
+                '''
             }
         }
-    stage('version') {
-      steps {
-        sh 'python3 --version'
-      }
     }
-    stage('hello') {
-      steps {
-        sh 'python3 hello.py'
-      }
-    }
-  }
 }
